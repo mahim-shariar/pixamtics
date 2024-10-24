@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+.homeSlider {
+ 
+  height: 700px;
+}
+.carousel-control-prev {
+  left: 0;
+  visibility: hidden;
+}
+.carousel-control-next {
+  left: 0;
+  visibility: hidden;
+}
+
+  .rsis-image {
+    background-size: contain !important;
+  }
+
+.navbar {
+  height: 60px;
+  background-color: #fef7e5;
+  position: relative;
+}
+
+.logo {
+}
+
+.menu-icon {
+  display: none;
+}
+
+.nav-elements {
+}
+
+.nav-elements ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.nav-elements ul li:not(:last-child) {
+  margin-right: 60px;
+}
+
+.nav-elements ul a {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2f234f;
+  text-decoration: none;
+}
+
+.nav-elements ul a.active {
+  color: #574c4c;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-elements ul a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #574c4c;
+}
+.carousel-caption h1{
+  font-size: 4.5rem;
+  text-shadow:  0 0 24px var(--tw-shadow-color);
+}
+.carousel-caption p{
+
+  word-wrap: break-word;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px
+}
+.carousel-caption .learnmore{
+  border-color: rgba(255,255,255,var(--tw-border-opacity));
+  border-radius: 9999px;
+  border-width: 1px;
+  color: rgba(255,255,255,var(--tw-text-opacity));
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.75rem 1rem;
+  text-decoration-line: none;
+  transition-duration: .2s;
+}
+.carousel-caption .learnmore:hover{
+ 
+  --tw-border-opacity: 1;
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 65;
+  background-color: rgba(140,140,140,var(--tw-bg-opacity));
+  border-color: rgba(255,255,255,var(--tw-border-opacity));
+  color: rgba(255,255,255,var(--tw-text-opacity));
+}
+.carousel-caption{
+  line-height: 1.5;
+  top: 35% !important;
+  
+  word-wrap: break-word;
+  animation-name: fadeInUp;
+}
+.autoplayvideos {
+  width: 100%;
+  max-width: 100%;
+}
+.videosection{
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+.overlayText {
+  position: absolute;
+  text-shadow: 0 0 24px var(--tw-shadow-color);
+  --tw-shadow-color: rgba(0,0,0,.6);
+  --tw-shadow: var(--tw-shadow-colored);
+  top: 30%;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  font-family: CircularXX,sans;
+  align-self: center;
+  word-wrap: break-word;
+  line-height: 1;
+}
+.overlayText svg{
+  height: 65px;
+  color: aliceblue;
+  fill: #fff;
+}
+.videoinline {
+  color: aliceblue;
+  font-size: 1.2rem;
+  text-shadow: 0 0 24px var(--tw-shadow-color);
+  --tw-shadow-color: rgba(0,0,0,.6);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.videoinline1{
+  margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+/* .yuxtbjgljo-cls-1 {
+  fill: #fff;
+} */
+#topText {
+  color: white;
+
+  align-items: center;  
+  font-size: 6rem;
+  align-self: center;
+}
+.thirdline{
+  font-size: 1.25rem;
+    line-height: 1.15rem;
+    word-wrap: break-word;
+    animation-name: fadeIn;    
+    margin-left: auto;
+    color: white;
+    margin-right: auto;
+    max-width: 580px;
+}
+@media (max-width: 768px) {
+  .nav-elements ul li:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  
+  .homeSlider {
+ 
+    height: 500px;
+  }
+  .carousel-caption p{
+
+    word-wrap: break-word;
+    font-size: 1.0rem;
+    line-height: 1.75rem;
+    line-height: 1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px
+  }
+  .carousel-caption h1{
+    font-size: 3.5rem;
+    text-shadow:  0 0 24px var(--tw-shadow-color);
+  }
+  .nav-elements {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    background-color: #fef7e5;
+    width: 0px;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  .nav-elements.active {
+    width: 270px;
+  }
+  .overlayText {
+    position: absolute;
+    top: 10%;
+    left: 0; 
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+    line-height: .5;
+  }
+#topText {
+  color: white;
+  text-shadow: 0 0 24px var(--tw-shadow-color);
+  align-items: center;  
+  font-size: 3rem;
+  --tw-shadow-color: rgba(0,0,0,.6);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.videoinline {
+  color: aliceblue;
+  font-size: 1rem;
+}
+  .nav-elements ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-elements ul li {
+    margin-right: unset;
+    margin-top: 22px;
+  }
+}
