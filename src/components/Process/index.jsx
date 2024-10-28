@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "../../assets/css/About.css";
 import ProcessCenter from "./ProcessCenter";
 import ProcessHeader from "./ProcessHeader";
