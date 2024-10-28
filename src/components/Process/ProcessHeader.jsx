@@ -107,20 +107,6 @@ const ProcessHeader = () => {
               <p style={{ color: 'white', lineHeight: '1.0rem', fontSize: matchDownMd ? '1rem' : '1.2rem', }}>Textile waste is our raw material, and we use it to create high-quality recycled cotton fiber.</p> */}
             </div>
           </section>
-
-          {loading && (
-            <div
-              style={{
-                height: "100vh",
-                backgroundColor: "#000000",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Loader />
-            </div>
-          )}
         </Box>
       </Grid>
     </>
