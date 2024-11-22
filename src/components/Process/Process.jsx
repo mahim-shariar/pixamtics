@@ -6,11 +6,13 @@ import Loader from "../Loader";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+
 const Process = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 3000); // Simulating async load delay
+    const timer = setTimeout(() => setLoading(false), 2000); // Simulating async load delay
     AOS.init({ duration: 2000 });
     return () => clearTimeout(timer); // Cleanup timer
 
@@ -34,8 +36,12 @@ const Process = () => {
   }
   return (
     <>
-      <ProcessHeader />
-      <ProcessCenter />
+      <LazyLoadComponent>
+        <ProcessHeader />
+      </LazyLoadComponent>
+      <LazyLoadComponent>
+        <ProcessCenter />
+      </LazyLoadComponent>
     </>
   );
 };

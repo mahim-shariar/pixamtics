@@ -121,184 +121,185 @@ const ContactUs = () => {
             <Link to="/Contactus" style={{ color: 'white', textDecoration: 'none' }}>Contact Us</Link> */}
           </p>
         </Box>
-      </LazyLoadComponent>
-      <Grid container style={{ height: "100%", backgroundColor: "#000000" }}>
-        <Grid item xs={12}>
-          <Box justifyContent="flex-center" alignItems="flex-center">
-            <Box
-              sx={{
-                left: "50%",
-                top: 0,
-                bottom: 0,
-                justifyContent: "flex-start",
-                background: "transparent",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                paddingRight: matchDownMd ? "0px" : "0",
-                marginTop: matchDownMd ? "-54px" : "-110px",
-              }}
-            >
-              <Divider
-                sx={{
-                  height: 2,
-                  width: 15,
-                  borderBottom: "1px",
-                  background: "white",
-                  opacity: 1,
-                }}
-              />
-              <Divider
-                orientation="vertical"
-                sx={{
-                  width: "0.0001px",
-                  height: matchDownMd ? "52px" : "108px",
-                  background: "White",
-                  opacity: 1,
-                }}
-              />
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
 
-      <Grid container style={{ height: "100%", background: "#000000" }}>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{ display: "flex", justifyContent: "flex-end", p: 5 }}
-        >
-          <Box sx={{ p: 2 }}>
-            <Typography
-              sx={{
-                color: "white",
-                fontWeight: "bold",
-                m: 2,
-                fontSize: "1.5rem",
-              }}
-            >
-              Fields with a * are required to submit.
-            </Typography>
-            {[
-              "First name *",
-              "Last name *",
-              "Email *",
-              "Topic *",
-              "Country *",
-              "Message *",
-            ].map((label) => (
-              <TextField
-                key={label}
-                label={label}
-                variant="standard"
-                focused
-                sx={commonTextFieldStyles}
-              />
-            ))}
-            <Typography
-              sx={{
-                color: "white",
-                fontWeight: "bold",
-                m: 2,
-                fontSize: "1rem",
-              }}
-            >
-              Agreement to Privacy Policy *
-            </Typography>
-            <Typography
-              sx={{
-                color: "white",
-                fontWeight: "bold",
-                m: 2,
-                fontSize: ".8rem",
-              }}
-            >
-              Read our privacy policy to review our terms & conditions.
-            </Typography>
-            <FormGroup>
-              <FormControlLabel
-                sx={{ m: 1, color: "white" }}
-                control={<Checkbox sx={{ color: "white" }} />}
-                label="I have read and agree to the Privacy Policy. *"
-              />
-              <FormControlLabel
-                sx={{ m: 1, color: "white" }}
-                control={<Checkbox sx={{ color: "white" }} />}
-                label="I accept to receive news, updates, and promotional information about Recover™ via email."
-              />
-            </FormGroup>
-            <Box
-              sx={{
-                width: 100,
-                height: 40,
-                color: "white",
-                textAlign: "center",
-                fontSize: 14,
-                fontWeight: "bold",
-                borderRadius: 8,
-                border: "2px solid white",
-                padding: 1,
-                margin: 2,
-                transition: "transform 0.3s ease-in-out",
-                ":hover": {
-                  background: "#1E1E1E",
+        <Grid container style={{ height: "100%", backgroundColor: "#000000" }}>
+          <Grid item xs={12}>
+            <Box justifyContent="flex-center" alignItems="flex-center">
+              <Box
+                sx={{
+                  left: "50%",
+                  top: 0,
+                  bottom: 0,
+                  justifyContent: "flex-start",
+                  background: "transparent",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  paddingRight: matchDownMd ? "0px" : "0",
+                  marginTop: matchDownMd ? "-54px" : "-110px",
+                }}
+              >
+                <Divider
+                  sx={{
+                    height: 2,
+                    width: 15,
+                    borderBottom: "1px",
+                    background: "white",
+                    opacity: 1,
+                  }}
+                />
+                <Divider
+                  orientation="vertical"
+                  sx={{
+                    width: "0.0001px",
+                    height: matchDownMd ? "52px" : "108px",
+                    background: "White",
+                    opacity: 1,
+                  }}
+                />
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+
+        <Grid container style={{ height: "100%", background: "#000000" }}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{ display: "flex", justifyContent: "flex-end", p: 5 }}
+          >
+            <Box sx={{ p: 2 }}>
+              <Typography
+                sx={{
                   color: "white",
-                  border: "none",
-                  transform: "scale(1.2)",
-                },
-              }}
-            >
-              Submit
+                  fontWeight: "bold",
+                  m: 2,
+                  fontSize: "1.5rem",
+                }}
+              >
+                Fields with a * are required to submit.
+              </Typography>
+              {[
+                "First name *",
+                "Last name *",
+                "Email *",
+                "Topic *",
+                "Country *",
+                "Message *",
+              ].map((label) => (
+                <TextField
+                  key={label}
+                  label={label}
+                  variant="standard"
+                  focused
+                  sx={commonTextFieldStyles}
+                />
+              ))}
+              <Typography
+                sx={{
+                  color: "white",
+                  fontWeight: "bold",
+                  m: 2,
+                  fontSize: "1rem",
+                }}
+              >
+                Agreement to Privacy Policy *
+              </Typography>
+              <Typography
+                sx={{
+                  color: "white",
+                  fontWeight: "bold",
+                  m: 2,
+                  fontSize: ".8rem",
+                }}
+              >
+                Read our privacy policy to review our terms & conditions.
+              </Typography>
+              <FormGroup>
+                <FormControlLabel
+                  sx={{ m: 1, color: "white" }}
+                  control={<Checkbox sx={{ color: "white" }} />}
+                  label="I have read and agree to the Privacy Policy. *"
+                />
+                <FormControlLabel
+                  sx={{ m: 1, color: "white" }}
+                  control={<Checkbox sx={{ color: "white" }} />}
+                  label="I accept to receive news, updates, and promotional information about Recover™ via email."
+                />
+              </FormGroup>
+              <Box
+                sx={{
+                  width: 100,
+                  height: 40,
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: 14,
+                  fontWeight: "bold",
+                  borderRadius: 8,
+                  border: "2px solid white",
+                  padding: 1,
+                  margin: 2,
+                  transition: "transform 0.3s ease-in-out",
+                  ":hover": {
+                    background: "#1E1E1E",
+                    color: "white",
+                    border: "none",
+                    transform: "scale(1.2)",
+                  },
+                }}
+              >
+                Submit
+              </Box>
             </Box>
-          </Box>
-        </Grid>
+          </Grid>
 
-        <Grid
-          item
-          xs={12}
-          md={6}
-          sx={{
-            display: "flex",
-            height: "100%",
-            justifyContent: "flex-start",
-            p: 5,
-          }}
-        >
-          <Box sx={{ background: "#ececec", p: 5 }}>
-            <Typography
-              sx={{
-                color: "#1E1E1E",
-                fontWeight: "bold",
-                m: 2,
-                fontSize: "1rem",
-              }}
-            >
-              FOLLOW US
-            </Typography>
-            <Typography
-              sx={{
-                color: "#1E1E1E",
-                fontWeight: "bold",
-                m: 2,
-                fontSize: "1rem",
-              }}
-            >
-              Pixamatics Technology Ltd.
-            </Typography>
-            <Typography
-              sx={{
-                color: "#1E1E1E",
-                fontWeight: "bold",
-                m: 2,
-                fontSize: "1rem",
-              }}
-            >
-              Plot No# 1, Road No# 10/17, Block# E, Dhaka 1213, Dhaka 1213
-            </Typography>
-          </Box>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              display: "flex",
+              height: "100%",
+              justifyContent: "flex-start",
+              p: 5,
+            }}
+          >
+            <Box sx={{ background: "#ececec", p: 5 }}>
+              <Typography
+                sx={{
+                  color: "#1E1E1E",
+                  fontWeight: "bold",
+                  m: 2,
+                  fontSize: "1rem",
+                }}
+              >
+                FOLLOW US
+              </Typography>
+              <Typography
+                sx={{
+                  color: "#1E1E1E",
+                  fontWeight: "bold",
+                  m: 2,
+                  fontSize: "1rem",
+                }}
+              >
+                Pixamatics Technology Ltd.
+              </Typography>
+              <Typography
+                sx={{
+                  color: "#1E1E1E",
+                  fontWeight: "bold",
+                  m: 2,
+                  fontSize: "1rem",
+                }}
+              >
+                Plot No# 1, Road No# 10/17, Block# E, Dhaka 1213, Dhaka 1213
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      </LazyLoadComponent>
     </>
   );
 };

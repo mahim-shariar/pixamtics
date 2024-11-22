@@ -39,7 +39,7 @@ const Products = () => {
 
   useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 3000); // Simulating async load delay
+    const timer = setTimeout(() => setLoading(false), 2000); // Simulating async load delay
     AOS.init({ duration: 2000 });
     return () => clearTimeout(timer); // Cleanup timer
   }, []);
@@ -85,19 +85,23 @@ const Products = () => {
           }}
         >
           <section style={{ height: "100%", width: "100%" }}>
-            <video
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                position: "center",
-              }}
-              loop
-              muted
-              autoPlay
-              alt="All the devices"
-              src={vd1}
-            />
+            <LazyLoadComponent>
+              <Box
+                component="video"
+                src={vd1}
+                autoPlay
+                muted
+                loop
+                sx={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
+                  position: "center",
+                }}
+              >
+                Your browser does not support the video tag.
+              </Box>
+            </LazyLoadComponent>
 
             <div
               style={{
@@ -145,316 +149,7 @@ const Products = () => {
           </section>
         </Box>
 
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          xl={12}
-          style={{ paddingBottom: "20px", backgroundColor: "#000000" }}
-        >
-          <Box justifyContent="flex-center" alignItems="flex-center">
-            <Box
-              sx={{
-                left: "50%",
-                bottom: 0,
-                justifyContent: "flex-start",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                height: matchDownMd ? "7vh" : "9vh",
-                marginTop: matchDownMd ? "-7.2vh" : "-9.2vh",
-              }}
-            >
-              <Divider
-                sx={{
-                  height: 2,
-                  width: 15,
-                  borderBottom: "1px",
-                  background: "white",
-                  opacity: 1,
-                }}
-              />
-              <Divider
-                orientation="vertical"
-                sx={{ width: "0.0001px", background: "White", opacity: 1 }}
-              />
-            </Box>
-            <Box
-              sx={{
-                left: "50%",
-                top: 0,
-                bottom: 0,
-                justifyContent: "flex-start",
-                background: "transparent",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Divider
-                orientation="vertical"
-                sx={{
-                  width: "0.0001px",
-                  height: matchDownMd ? "9vh" : "10vh",
-                  background: "white",
-                  opacity: 1,
-                }}
-              />
-              <Divider
-                sx={{
-                  height: 15,
-                  width: 15,
-                  borderRadius: "50%",
-                  background: "white",
-                  opacity: 1,
-                  marginBottom: 2,
-                }}
-              />
-              <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-                <Typography
-                  sx={{
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 20,
-                    fontWeight: "bold",
-                    marginBottom: 2,
-                  }}
-                >
-                  DISCOVER A YARN PERFECTED JUST FOR YOU
-                </Typography>
-              </div>
-            </Box>
-          </Box>
-        </Grid>
-
-        <Grid
-          container
-          style={{
-            position: "relative",
-            height: "100%",
-            backgroundColor: "#000000",
-            paddingLeft: matchDownMd ? "10px" : "145px",
-            paddingRight: matchDownMd ? "10px" : "110px",
-          }}
-          sx={{ pt: 2, pb: 2 }}
-        >
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            xl={6}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 2,
-            }}
-          >
-            <div data-aos="zoom-in-up">
-              <Box sx={{ textAlign: "left", backgroundColor: "black" }}>
-                <Typography
-                  sx={{
-                    pb: 1,
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 20,
-                    fontWeight: "bold",
-                  }}
-                >
-                  RING SPUN YARNS
-                </Typography>
-                <Typography
-                  sx={{ color: "white", textAlign: "center", fontSize: 15 }}
-                >
-                  Materials: Cotton
-                </Typography>
-                <Typography
-                  sx={{ color: "white", textAlign: "center", fontSize: 15 }}
-                >
-                  Use Cases: Knitting, Weaving.
-                </Typography>
-                <Typography
-                  sx={{ color: "white", textAlign: "center", fontSize: 15 }}
-                >
-                  Types: Carded, Combed, Slub, Compact
-                </Typography>
-                <Typography
-                  sx={{ color: "white", textAlign: "center", fontSize: 15 }}
-                >
-                  Counts: 6s – 40s
-                </Typography>
-              </Box>
-            </div>
-          </Grid>
-
-          <Box
-            sx={{
-              position: "absolute",
-              zIndex: 1,
-              left: "50%",
-              top: 0,
-              bottom: 0,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              transform: "translateX(-50%)",
-              width: 0,
-            }}
-          >
-            <Divider
-              orientation="vertical"
-              sx={{ height: "100%", background: "white", opacity: 1 }}
-            />
-          </Box>
-
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            xl={6}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 2,
-            }}
-          >
-            <div data-aos="fade-up">
-              <Box sx={{ textAlign: "center", padding: 1 }}>
-                <LazyLoadComponent>
-                  <Box
-                    component="img"
-                    height="200"
-                    src={Products1}
-                    alt="Image"
-                    sx={{ width: "80%", objectFit: "cover" }}
-                  />
-                </LazyLoadComponent>
-              </Box>
-            </div>
-          </Grid>
-        </Grid>
-
-        <Grid
-          container
-          style={{
-            position: "relative",
-            height: "100%",
-            backgroundColor: "#000000",
-            paddingLeft: matchDownMd ? "10px" : "145px",
-            paddingRight: matchDownMd ? "10px" : "110px",
-          }}
-        >
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            xl={6}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 2,
-            }}
-          >
-            <div data-aos="fade-up">
-              <Box sx={{ textAlign: "center", padding: 1 }}>
-                <LazyLoadComponent>
-                  <Box
-                    component="img"
-                    height="200"
-                    src={productV2}
-                    alt="Image"
-                    sx={{ width: "80%", objectFit: "cover" }}
-                  />
-                </LazyLoadComponent>
-              </Box>
-            </div>
-          </Grid>
-
-          <Box
-            sx={{
-              position: "absolute",
-              zIndex: 1,
-              left: "50%",
-              top: 0,
-              bottom: 0,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              transform: "translateX(-50%)",
-              width: 0,
-            }}
-          >
-            <Divider
-              orientation="vertical"
-              sx={{ height: "100%", background: "white", opacity: 1 }}
-            />
-          </Box>
-
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            xl={6}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 2,
-            }}
-          >
-            <div data-aos="zoom-in-up">
-              <Box sx={{ textAlign: "left", backgroundColor: "black" }}>
-                <Typography
-                  sx={{
-                    pb: 1,
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: 20,
-                    fontWeight: "bold",
-                  }}
-                >
-                  OPEN END YARNS
-                </Typography>
-                <Typography
-                  sx={{ color: "white", textAlign: "center", fontSize: 15 }}
-                >
-                  Materials: Cotton
-                </Typography>
-                <Typography
-                  sx={{ color: "white", textAlign: "center", fontSize: 15 }}
-                >
-                  Use Cases: Knitting, Weaving, Denim
-                </Typography>
-                <Typography
-                  sx={{ color: "white", textAlign: "center", fontSize: 15 }}
-                >
-                  Counts: 6s – 30s
-                </Typography>
-              </Box>
-            </div>
-          </Grid>
-        </Grid>
-
-        <Grid
-          container
-          style={{
-            position: "relative",
-            height: "100%",
-            backgroundColor: "#000000",
-          }}
-        >
+        <LazyLoadComponent>
           <Grid
             item
             xs={12}
@@ -462,41 +157,499 @@ const Products = () => {
             md={12}
             lg={12}
             xl={12}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+            style={{ paddingBottom: "20px", backgroundColor: "#000000" }}
           >
+            <Box justifyContent="flex-center" alignItems="flex-center">
+              <Box
+                sx={{
+                  left: "50%",
+                  bottom: 0,
+                  justifyContent: "flex-start",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  height: matchDownMd ? "7vh" : "9vh",
+                  marginTop: matchDownMd ? "-7.2vh" : "-9.2vh",
+                }}
+              >
+                <Divider
+                  sx={{
+                    height: 2,
+                    width: 15,
+                    borderBottom: "1px",
+                    background: "white",
+                    opacity: 1,
+                  }}
+                />
+                <Divider
+                  orientation="vertical"
+                  sx={{ width: "0.0001px", background: "White", opacity: 1 }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  left: "50%",
+                  top: 0,
+                  bottom: 0,
+                  justifyContent: "flex-start",
+                  background: "transparent",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <Divider
+                  orientation="vertical"
+                  sx={{
+                    width: "0.0001px",
+                    height: matchDownMd ? "9vh" : "10vh",
+                    background: "white",
+                    opacity: 1,
+                  }}
+                />
+                <Divider
+                  sx={{
+                    height: 15,
+                    width: 15,
+                    borderRadius: "50%",
+                    background: "white",
+                    opacity: 1,
+                    marginBottom: 2,
+                  }}
+                />
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="bottom-bottom"
+                >
+                  <Typography
+                    sx={{
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                      marginBottom: 2,
+                    }}
+                  >
+                    DISCOVER A YARN PERFECTED JUST FOR YOU
+                  </Typography>
+                </div>
+              </Box>
+            </Box>
+          </Grid>
+
+          <Grid
+            container
+            style={{
+              position: "relative",
+              height: "100%",
+              backgroundColor: "#000000",
+              paddingLeft: matchDownMd ? "10px" : "145px",
+              paddingRight: matchDownMd ? "10px" : "110px",
+            }}
+            sx={{ pt: 2, pb: 2 }}
+          >
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              xl={6}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 2,
+              }}
+            >
+              <div data-aos="zoom-in-up">
+                <Box sx={{ textAlign: "left", backgroundColor: "black" }}>
+                  <Typography
+                    sx={{
+                      pb: 1,
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    RING SPUN YARNS
+                  </Typography>
+                  <Typography
+                    sx={{ color: "white", textAlign: "center", fontSize: 15 }}
+                  >
+                    Materials: Cotton
+                  </Typography>
+                  <Typography
+                    sx={{ color: "white", textAlign: "center", fontSize: 15 }}
+                  >
+                    Use Cases: Knitting, Weaving.
+                  </Typography>
+                  <Typography
+                    sx={{ color: "white", textAlign: "center", fontSize: 15 }}
+                  >
+                    Types: Carded, Combed, Slub, Compact
+                  </Typography>
+                  <Typography
+                    sx={{ color: "white", textAlign: "center", fontSize: 15 }}
+                  >
+                    Counts: 6s – 40s
+                  </Typography>
+                </Box>
+              </div>
+            </Grid>
+
             <Box
               sx={{
+                position: "absolute",
+                zIndex: 1,
+                left: "50%",
+                top: 0,
+                bottom: 0,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                height: "100%",
-                position: "relative",
+                transform: "translateX(-50%)",
+                width: 0,
               }}
             >
               <Divider
                 orientation="vertical"
-                sx={{
-                  width: 0.0001,
-                  height: "120px",
-                  background: "white",
-                  opacity: 1,
-                }}
+                sx={{ height: "100%", background: "white", opacity: 1 }}
               />
             </Box>
+
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              xl={6}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 2,
+              }}
+            >
+              <div data-aos="fade-up">
+                <Box sx={{ textAlign: "center", padding: 1 }}>
+                  <LazyLoadComponent>
+                    <Box
+                      component="img"
+                      height="200"
+                      src={Products1}
+                      alt="Image"
+                      sx={{ width: "80%", objectFit: "cover" }}
+                    />
+                  </LazyLoadComponent>
+                </Box>
+              </div>
+            </Grid>
           </Grid>
+
           <Grid
             container
             style={{
+              position: "relative",
               height: "100%",
               backgroundColor: "#000000",
-              paddingLeft: matchDownMd ? "10px" : "100px",
-              paddingRight: matchDownMd ? "10px" : "100px",
+              paddingLeft: matchDownMd ? "10px" : "145px",
+              paddingRight: matchDownMd ? "10px" : "110px",
             }}
           >
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              xl={6}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 2,
+              }}
+            >
+              <div data-aos="fade-up">
+                <Box sx={{ textAlign: "center", padding: 1 }}>
+                  <LazyLoadComponent>
+                    <Box
+                      component="img"
+                      height="200"
+                      src={productV2}
+                      alt="Image"
+                      sx={{ width: "80%", objectFit: "cover" }}
+                    />
+                  </LazyLoadComponent>
+                </Box>
+              </div>
+            </Grid>
+
+            <Box
+              sx={{
+                position: "absolute",
+                zIndex: 1,
+                left: "50%",
+                top: 0,
+                bottom: 0,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                transform: "translateX(-50%)",
+                width: 0,
+              }}
+            >
+              <Divider
+                orientation="vertical"
+                sx={{ height: "100%", background: "white", opacity: 1 }}
+              />
+            </Box>
+
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              xl={6}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 2,
+              }}
+            >
+              <div data-aos="zoom-in-up">
+                <Box sx={{ textAlign: "left", backgroundColor: "black" }}>
+                  <Typography
+                    sx={{
+                      pb: 1,
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    OPEN END YARNS
+                  </Typography>
+                  <Typography
+                    sx={{ color: "white", textAlign: "center", fontSize: 15 }}
+                  >
+                    Materials: Cotton
+                  </Typography>
+                  <Typography
+                    sx={{ color: "white", textAlign: "center", fontSize: 15 }}
+                  >
+                    Use Cases: Knitting, Weaving, Denim
+                  </Typography>
+                  <Typography
+                    sx={{ color: "white", textAlign: "center", fontSize: 15 }}
+                  >
+                    Counts: 6s – 30s
+                  </Typography>
+                </Box>
+              </div>
+            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            style={{
+              position: "relative",
+              height: "100%",
+              backgroundColor: "#000000",
+            }}
+          >
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              xl={12}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  height: "100%",
+                  position: "relative",
+                }}
+              >
+                <Divider
+                  orientation="vertical"
+                  sx={{
+                    width: 0.0001,
+                    height: "120px",
+                    background: "white",
+                    opacity: 1,
+                  }}
+                />
+              </Box>
+            </Grid>
+            <Grid
+              container
+              style={{
+                height: "100%",
+                backgroundColor: "#000000",
+                paddingLeft: matchDownMd ? "10px" : "100px",
+                paddingRight: matchDownMd ? "10px" : "100px",
+              }}
+            >
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                xl={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    height: "100%",
+                    position: "relative",
+                  }}
+                >
+                  <Divider
+                    orientation="vertical"
+                    sx={{
+                      width: 0.0001,
+                      height: "50px",
+                      background: "white",
+                      opacity: 1,
+                    }}
+                  />
+                  <Divider
+                    sx={{
+                      height: 15,
+                      width: 15,
+                      borderRadius: "50%",
+                      background: "white",
+                      opacity: 1,
+                      marginBottom: 2,
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                      marginBottom: 2,
+                    }}
+                  >
+                    Certifications
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid
+                container
+                sx={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                <div data-aos="fade-up">
+                  <LazyLoadComponent>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Box
+                        component="img"
+                        src={row11}
+                        sx={{
+                          maxWidth: 300,
+                          width: matchDownMd ? 150 : 300,
+                          p: 2,
+                        }}
+                      />
+                      <Box
+                        component="img"
+                        src={row12}
+                        sx={{
+                          maxWidth: 300,
+                          width: matchDownMd ? 75 : 160,
+                          paddingLeft: "-20px",
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Box
+                        component="img"
+                        src={row21}
+                        sx={{
+                          maxWidth: 250,
+                          width: matchDownMd ? 120 : 230,
+                          p: 2,
+                        }}
+                      />
+                      <Box
+                        component="img"
+                        src={row22}
+                        sx={{
+                          maxWidth: 250,
+                          width: matchDownMd ? 120 : 230,
+                          p: 2,
+                        }}
+                      />
+                      <Box
+                        component="img"
+                        src={row23}
+                        sx={{
+                          maxWidth: 250,
+                          width: matchDownMd ? 120 : 230,
+                          p: 2,
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                      <Box
+                        component="img"
+                        src={row31}
+                        sx={{
+                          maxWidth: 200,
+                          width: matchDownMd ? 80 : 170,
+                          p: 2,
+                        }}
+                      />
+                      <Box
+                        component="img"
+                        src={row32}
+                        sx={{
+                          maxWidth: 200,
+                          width: matchDownMd ? 80 : 170,
+                          p: 2,
+                        }}
+                      />
+                      <Box
+                        component="img"
+                        src={row33}
+                        sx={{
+                          maxWidth: 200,
+                          width: matchDownMd ? 80 : 170,
+                          p: 2,
+                        }}
+                      />
+                    </Grid>
+                  </LazyLoadComponent>
+                </div>
+              </Grid>
+            </Grid>
             <Grid
               item
               xs={12}
@@ -530,174 +683,30 @@ const Products = () => {
                 />
                 <Divider
                   sx={{
-                    height: 15,
-                    width: 15,
+                    height: 33,
+                    width: 33,
                     borderRadius: "50%",
                     background: "white",
-                    opacity: 1,
-                    marginBottom: 2,
-                  }}
-                />
-                <Typography
-                  sx={{
-                    color: "white",
-                    fontSize: 20,
-                    fontWeight: "bold",
-                    marginBottom: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 5,
+                    transition: "transform 0.3s ease-in-out",
+                    ":hover": {
+                      background: "white",
+                      transform: "scale(1.2)",
+                    },
                   }}
                 >
-                  Certifications
-                </Typography>
+                  <ArrowUpwardIcon
+                    onClick={scrollToTop}
+                    sx={{ color: "black" }}
+                  />
+                </Divider>
               </Box>
             </Grid>
-            <Grid
-              container
-              sx={{
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "center",
-              }}
-            >
-              <div data-aos="fade-up">
-                <LazyLoadComponent>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Box
-                      component="img"
-                      src={row11}
-                      sx={{
-                        maxWidth: 300,
-                        width: matchDownMd ? 150 : 300,
-                        p: 2,
-                      }}
-                    />
-                    <Box
-                      component="img"
-                      src={row12}
-                      sx={{
-                        maxWidth: 300,
-                        width: matchDownMd ? 75 : 160,
-                        paddingLeft: "-20px",
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Box
-                      component="img"
-                      src={row21}
-                      sx={{
-                        maxWidth: 250,
-                        width: matchDownMd ? 120 : 230,
-                        p: 2,
-                      }}
-                    />
-                    <Box
-                      component="img"
-                      src={row22}
-                      sx={{
-                        maxWidth: 250,
-                        width: matchDownMd ? 120 : 230,
-                        p: 2,
-                      }}
-                    />
-                    <Box
-                      component="img"
-                      src={row23}
-                      sx={{
-                        maxWidth: 250,
-                        width: matchDownMd ? 120 : 230,
-                        p: 2,
-                      }}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                    <Box
-                      component="img"
-                      src={row31}
-                      sx={{
-                        maxWidth: 200,
-                        width: matchDownMd ? 80 : 170,
-                        p: 2,
-                      }}
-                    />
-                    <Box
-                      component="img"
-                      src={row32}
-                      sx={{
-                        maxWidth: 200,
-                        width: matchDownMd ? 80 : 170,
-                        p: 2,
-                      }}
-                    />
-                    <Box
-                      component="img"
-                      src={row33}
-                      sx={{
-                        maxWidth: 200,
-                        width: matchDownMd ? 80 : 170,
-                        p: 2,
-                      }}
-                    />
-                  </Grid>
-                </LazyLoadComponent>
-              </div>
-            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            xl={12}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                height: "100%",
-                position: "relative",
-              }}
-            >
-              <Divider
-                orientation="vertical"
-                sx={{
-                  width: 0.0001,
-                  height: "50px",
-                  background: "white",
-                  opacity: 1,
-                }}
-              />
-              <Divider
-                sx={{
-                  height: 33,
-                  width: 33,
-                  borderRadius: "50%",
-                  background: "white",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 5,
-                  transition: "transform 0.3s ease-in-out",
-                  ":hover": {
-                    background: "white",
-                    transform: "scale(1.2)",
-                  },
-                }}
-              >
-                <ArrowUpwardIcon
-                  onClick={scrollToTop}
-                  sx={{ color: "black" }}
-                />
-              </Divider>
-            </Box>
-          </Grid>
-        </Grid>
+        </LazyLoadComponent>
       </Grid>
     </>
   );

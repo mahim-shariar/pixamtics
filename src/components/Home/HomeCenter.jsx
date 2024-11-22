@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -530,7 +531,7 @@ const About = () => {
                     component="video"
                     height="200"
                     width="80%"
-                    src={vd1}
+                    src="https://ak2-bucket.s3.us-east-1.amazonaws.com/outspace-assets/Videos/Home_1.mp4"
                     autoPlay
                     muted
                     loop
@@ -725,7 +726,7 @@ const About = () => {
               left: "50%",
               top: 0,
               bottom: 0,
-              display: "flex",
+
               flexDirection: "column",
               alignItems: "center",
               transform: "translateX(-50%)",

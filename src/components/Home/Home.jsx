@@ -30,7 +30,7 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 3000); // Simulating async load delay
+    const timer = setTimeout(() => setLoading(false), 2000); // Simulating async load delay
     // AOS.init({ duration: 2000 });
     return () => clearTimeout(timer); // Cleanup timer
 
@@ -61,36 +61,40 @@ const Home = () => {
     <>
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12} sx={{ zIndex: 1 }}>
-          <Box
-            sx={{
-              ".carousel-indicators": {
-                justifyContent: "flex-end !important",
-                marginRight: "5% !important",
-              },
-            }}
-          >
-            <section
-              style={{ height: "100%", width: "100%" }}
-              className={`content ${loading ? "hidden" : ""}`}
+          <LazyLoadComponent>
+            <Box
+              sx={{
+                ".carousel-indicators": {
+                  justifyContent: "flex-end !important",
+                  marginRight: "5% !important",
+                },
+              }}
             >
-              <Carousel
-                nextIcon={false}
-                prevIcon={false}
-                style={{ position: "flex", width: "100%" }}
+              <section
+                style={{ height: "100%", width: "100%" }}
+                className={`content ${loading ? "hidden" : ""}`}
               >
-                <Carousel.Item interval={2000} style={{ textAlign: "center" }}>
-                  <img
-                    style={{
-                      height: matchDownMd ? "700px" : "686px",
-                      width: "100%",
-                      objectFit: "cover",
-                    }}
-                    src={gambar2}
-                    object
-                    onLoad={handleLoaded}
-                    alt="First slide"
-                  />
-                  {/* <Carousel.Caption >
+                <Carousel
+                  nextIcon={false}
+                  prevIcon={false}
+                  style={{ position: "flex", width: "100%" }}
+                >
+                  <Carousel.Item
+                    interval={2000}
+                    style={{ textAlign: "center" }}
+                  >
+                    <img
+                      style={{
+                        height: matchDownMd ? "700px" : "686px",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                      src={gambar2}
+                      object
+                      onLoad={handleLoaded}
+                      alt="First slide"
+                    />
+                    {/* <Carousel.Caption >
                   <h1 style={{ fontSize: matchDownMd ? '1.5rem' : '4rem' }}>
                     Introducing REICONICS</h1>
                   <p style={{
@@ -115,20 +119,23 @@ const Home = () => {
                     Learn more
                   </Typography></a>
                 </Carousel.Caption> */}
-                </Carousel.Item>
-                <Carousel.Item interval={2000} style={{ textAlign: "center" }}>
-                  <img
-                    style={{
-                      height: matchDownMd ? "700px" : "686px",
-                      width: "100%",
-                      objectFit: "cover",
-                    }}
-                    src={gambar1}
-                    object
-                    onLoad={handleLoaded}
-                    alt="First slide"
-                  />
-                  {/* <Carousel.Caption >
+                  </Carousel.Item>
+                  <Carousel.Item
+                    interval={2000}
+                    style={{ textAlign: "center" }}
+                  >
+                    <img
+                      style={{
+                        height: matchDownMd ? "700px" : "686px",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                      src={gambar1}
+                      object
+                      onLoad={handleLoaded}
+                      alt="First slide"
+                    />
+                    {/* <Carousel.Caption >
                   <h1 style={{ fontSize: matchDownMd ? '1.5rem' : '4rem' }}>
                     Sourcing with Due Diligence</h1>
                   <p style={{
@@ -154,20 +161,23 @@ const Home = () => {
                       Learn more
                     </Typography></a>
                 </Carousel.Caption> */}
-                </Carousel.Item>
-                <Carousel.Item interval={2000} style={{ textAlign: "center" }}>
-                  <img
-                    style={{
-                      height: matchDownMd ? "700px" : "686px",
-                      objectFit: "cover",
-                      width: "100%",
-                    }}
-                    src={gambar3}
-                    object
-                    onLoad={handleLoaded}
-                    alt="First slide"
-                  />
-                  {/* <Carousel.Caption >
+                  </Carousel.Item>
+                  <Carousel.Item
+                    interval={2000}
+                    style={{ textAlign: "center" }}
+                  >
+                    <img
+                      style={{
+                        height: matchDownMd ? "700px" : "686px",
+                        objectFit: "cover",
+                        width: "100%",
+                      }}
+                      src="https://ak2-bucket.s3.us-east-1.amazonaws.com/outspace-assets/image/slide3.jpg"
+                      object
+                      onLoad={handleLoaded}
+                      alt="First slide"
+                    />
+                    {/* <Carousel.Caption >
                   <h1 style={{ fontSize: matchDownMd ? '1.5rem' : '4rem' }}>
                     Introducing REICONICS</h1>
                   <p style={{
@@ -193,71 +203,72 @@ const Home = () => {
                     Learn more
                   </Typography></a>
                 </Carousel.Caption> */}
-                </Carousel.Item>
-              </Carousel>
-              <div
-                style={{
-                  width: "100%",
-                  position: "absolute",
-                  top: matchDownMd ? "25%" : "25%",
-                  left: "0",
-                  textAlign: "center",
-                  zIndex: 1,
-                  lineHeight: matchDownMd ? "0.5" : "0.9",
-                }}
-              >
-                <img
+                  </Carousel.Item>
+                </Carousel>
+                <div
                   style={{
-                    height: matchDownMd ? "100px" : "110px",
-                    boxShadow: "0 0px 0px rgba(0, 0, 0, 0.6)",
-                    textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
-                  }}
-                  src={singlelogo1}
-                  object
-                  alt="First slide"
-                  onLoad={handleLoaded}
-                />
-                <img
-                  style={{
-                    height: matchDownMd ? "100px" : "110px",
-                    textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
-                  }}
-                  src={singlelogo2}
-                  object
-                  alt="First slide"
-                  onLoad={handleLoaded}
-                />
-
-                <p
-                  style={{
-                    paddingTop: "20px",
-                    color: "white",
-                    fontWeight: "bold",
-                    alignItems: "center",
-
-                    fontSize: matchDownMd ? "35px" : "45px",
-                    textDecoration: "none",
-                    textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
+                    width: "100%",
+                    position: "absolute",
+                    top: matchDownMd ? "25%" : "25%",
+                    left: "0",
+                    textAlign: "center",
+                    zIndex: 1,
+                    lineHeight: matchDownMd ? "0.5" : "0.9",
                   }}
                 >
-                  Outpace Spinning Mills
-                </p>
-                <p
-                  style={{
-                    color: "white",
-                    fontWeight: "bold",
-                    alignItems: "center",
+                  <img
+                    style={{
+                      height: matchDownMd ? "100px" : "110px",
+                      boxShadow: "0 0px 0px rgba(0, 0, 0, 0.6)",
+                      textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
+                    }}
+                    src={singlelogo1}
+                    object
+                    alt="First slide"
+                    onLoad={handleLoaded}
+                  />
+                  <img
+                    style={{
+                      height: matchDownMd ? "100px" : "110px",
+                      textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
+                    }}
+                    src={singlelogo2}
+                    object
+                    alt="First slide"
+                    onLoad={handleLoaded}
+                  />
 
-                    fontSize: matchDownMd ? "35px" : "45px",
-                    textDecoration: "none",
-                    textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
-                  }}
-                >
-                  R A Spinning Mills
-                </p>
-              </div>
-            </section>
-          </Box>
+                  <p
+                    style={{
+                      paddingTop: "20px",
+                      color: "white",
+                      fontWeight: "bold",
+                      alignItems: "center",
+
+                      fontSize: matchDownMd ? "35px" : "45px",
+                      textDecoration: "none",
+                      textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
+                    }}
+                  >
+                    Outpace Spinning Mills
+                  </p>
+                  <p
+                    style={{
+                      color: "white",
+                      fontWeight: "bold",
+                      alignItems: "center",
+
+                      fontSize: matchDownMd ? "35px" : "45px",
+                      textDecoration: "none",
+                      textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
+                    }}
+                  >
+                    R A Spinning Mills
+                  </p>
+                </div>
+              </section>
+            </Box>
+          </LazyLoadComponent>
         </Grid>
 
         <Grid

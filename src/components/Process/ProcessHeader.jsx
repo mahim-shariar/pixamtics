@@ -5,6 +5,8 @@ import FactoryIcon from "@mui/icons-material/Factory";
 import vd1 from "../../assets/Videos/Process.mp4";
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+
 const ProcessHeader = () => {
   const [loading, setLoading] = useState(true);
   const videoEl = useRef(null);
@@ -50,21 +52,23 @@ const ProcessHeader = () => {
             style={{ height: "100%" }}
             className={`content ${loading ? "hidden" : ""}`}
           >
-            <video
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-              loading="lazy"
-              loop
-              muted
-              onCanPlayThrough={handleLoaded}
-              alt="All the devices"
-              ref={videoEl}
-            >
-              <source type="video/mp4" src={vd1}></source>
-            </video>
+            <LazyLoadComponent>
+              <Box
+                component="video"
+                src={vd1}
+                autoPlay
+                muted
+                loop
+                sx={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
+                  position: "center",
+                }}
+              >
+                Your browser does not support the video tag.
+              </Box>
+            </LazyLoadComponent>
 
             <div
               style={{

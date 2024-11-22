@@ -121,22 +121,24 @@ const Aboutus = () => {
                                 onLoad={handleLoaded} // Fires when the image is fully loaded
                             />
                         </div>  */}
-            <video
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                position: "center",
-              }}
-              loop
-              muted
-              loading="lazy"
-              onCanPlayThrough={handleLoaded}
-              alt="All the devices"
-              ref={videoEl}
-            >
-              <source type="video/mp4" src={vd1}></source>
-            </video>
+            <LazyLoadComponent>
+              <Box
+                component="video"
+                src={vd1}
+                autoPlay
+                muted
+                loop
+                sx={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
+                  position: "center",
+                }}
+              >
+                Your browser does not support the video tag.
+              </Box>
+            </LazyLoadComponent>
+
             <div
               style={{
                 width: "100%",
