@@ -61,13 +61,13 @@ const Footer = () => {
           md={2}
           sx={{ color: "white", textAlign: "left", pl: 5, pb: 5 }}
         >
-          {/* <Typography sx={{ pb: 1, }} ><Link to="/Aboutus" style={{ color: 'white', textDecoration: 'none' }}>About us</Link></Typography>
-                    <Typography sx={{ pb: 1, }} ><Link to="/Process" style={{ color: 'white', textDecoration: 'none' }}>Process</Link></Typography>
-                    <Typography sx={{ pb: 1, }}><Link to="/Products" style={{ color: 'white', textDecoration: 'none' }}>Products</Link></Typography> */}
+          {/* <Typography sx={{ pb: 1, }} ><Link to="/aboutus" style={{ color: 'white', textDecoration: 'none' }}>About us</Link></Typography>
+                    <Typography sx={{ pb: 1, }} ><Link to="/process" style={{ color: 'white', textDecoration: 'none' }}>Process</Link></Typography>
+                    <Typography sx={{ pb: 1, }}><Link to="/products" style={{ color: 'white', textDecoration: 'none' }}>Products</Link></Typography> */}
         </Grid>
         <Grid item xs={5} sm={5} md={2} sx={{ textAlign: "left" }}>
-          {/* <Typography sx={{ pb: 1, }} ><Link to="/News" style={{ color: 'white', textDecoration: 'none' }}>News</Link></Typography>
-                    <Typography sx={{ pb: 1, }} ><Link to="/Contactus" style={{ color: 'white', textDecoration: 'none' }}>Contact us</Link></Typography> */}
+          {/* <Typography sx={{ pb: 1, }} ><Link to="/news" style={{ color: 'white', textDecoration: 'none' }}>News</Link></Typography>
+                    <Typography sx={{ pb: 1, }} ><Link to="/contactus" style={{ color: 'white', textDecoration: 'none' }}>Contact us</Link></Typography> */}
         </Grid>
         <Grid xs={12} sm={12} md={1}></Grid>
 
@@ -130,7 +130,7 @@ const Footer = () => {
               textDecoration: "none",
               paddingRight: "20px",
             }}
-            href="/Home"
+            href="/home"
           >
             Home
           </a>
@@ -140,7 +140,7 @@ const Footer = () => {
               textDecoration: "none",
               paddingRight: "20px",
             }}
-            href="/Aboutus"
+            href="/aboutus"
           >
             About us
           </a>
@@ -150,7 +150,7 @@ const Footer = () => {
               textDecoration: "none",
               paddingRight: "20px",
             }}
-            href="/Process"
+            href="/process"
           >
             Process
           </a>
@@ -161,7 +161,7 @@ const Footer = () => {
               textDecoration: "none",
               paddingRight: "20px",
             }}
-            href="/Products"
+            href="/products"
           >
             Products
           </a>
@@ -174,7 +174,7 @@ const Footer = () => {
               textDecoration: "none",
               paddingRight: "20px",
             }}
-            href="/Contactus"
+            href="/contactus"
           >
             Contract us
           </a>

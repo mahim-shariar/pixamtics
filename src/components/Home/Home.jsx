@@ -19,8 +19,8 @@ import { LazyLoadComponent } from "react-lazy-load-image-component";
 import singlelogo1 from "../../assets/img/singlelogo1.png";
 import singlelogo2 from "../../assets/img/singlelogo2.png";
 import "bootstrap/dist/css/bootstrap.min.css";
-import About from "./HomeCenter";
-import "../../assets/css/HomeImageSlider.css";
+import About from "./homeCenter";
+import "../../assets/css/homeImageSlider.css";
 // import { AOS } from "aos";
 
 const Home = () => {

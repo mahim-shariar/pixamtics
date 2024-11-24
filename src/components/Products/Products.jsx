@@ -141,9 +141,9 @@ const Products = () => {
                                 textDecoration: 'none',
                                 textShadow: '0 0 24px var(--tw-shadow-color)'
                                 }} >
-                                <Link to="/Home" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
+                                <Link to="/home" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
                                 <span style={{ color: 'white', margin: '0 5px' }}>&gt;</span>
-                                <Link to="/Products" style={{ color: 'white', textDecoration: 'none' }}>Products</Link>
+                                <Link to="/products" style={{ color: 'white', textDecoration: 'none' }}>Products</Link>
                                 </p> */}
             </div>
           </section>

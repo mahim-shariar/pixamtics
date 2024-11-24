@@ -116,9 +116,9 @@ const ContactUs = () => {
               textShadow: "0 0 24px var(--tw-shadow-color)",
             }}
           >
-            {/* <Link to="/Home" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
+            {/* <Link to="/home" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
             <span style={{ color: 'white', margin: '0 5px' }}>&gt;</span>
-            <Link to="/Contactus" style={{ color: 'white', textDecoration: 'none' }}>Contact Us</Link> */}
+            <Link to="/contactus" style={{ color: 'white', textDecoration: 'none' }}>Contact Us</Link> */}
           </p>
         </Box>
 

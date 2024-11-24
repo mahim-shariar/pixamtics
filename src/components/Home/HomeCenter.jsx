@@ -24,8 +24,8 @@ import fakir from "../../assets/image/Partners/fakir fashion.png";
 import ACS from "../../assets/image/Partners/ACS 1.png";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import vd1 from "../../assets/Videos/Home_1.mp4";
-import Home1 from "../../assets/image/Home1.png";
+import vd1 from "../../assets/Videos/home_1.mp4";
+import Home1 from "../../assets/image/home1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { red } from "@mui/material/colors";
@@ -144,7 +144,7 @@ const About = () => {
                 alignItems: "center",
               }}
             >
-              <a style={{ textDecoration: "none" }} href="/Aboutus">
+              <a style={{ textDecoration: "none" }} href="/aboutus">
                 <Typography
                   sx={{
                     color: "white",
@@ -581,7 +581,7 @@ const About = () => {
               orientation="vertical"
               sx={{ width: 1, backgroundColor: "white" }}
             />
-            <a style={{ textDecoration: "none" }} href="/Process">
+            <a style={{ textDecoration: "none" }} href="/process">
               {" "}
               <Typography
                 sx={{
@@ -823,7 +823,7 @@ const About = () => {
               orientation="vertical"
               sx={{ width: 0.0001, background: "white", opacity: 1 }}
             />
-            <a style={{ textDecoration: "none" }} href="/Products">
+            <a style={{ textDecoration: "none" }} href="/products">
               <Typography
                 sx={{
                   color: "white",

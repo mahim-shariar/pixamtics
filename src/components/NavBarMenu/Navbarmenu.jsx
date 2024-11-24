@@ -77,7 +77,7 @@ const Navbarmenu = () => {
                 <NavLink
                   onClick={toggleClass}
                   activeClassName="is-active"
-                  to="/Home"
+                  to="/home"
                 >
                   Home
                 </NavLink>
@@ -86,7 +86,7 @@ const Navbarmenu = () => {
                 <NavLink
                   onClick={toggleClass}
                   activeClassName="is-active"
-                  to="/Aboutus"
+                  to="/aboutus"
                 >
                   About us
                 </NavLink>
@@ -95,7 +95,7 @@ const Navbarmenu = () => {
                 <NavLink
                   onClick={toggleClass}
                   activeClassName="is-active"
-                  to="/Process"
+                  to="/process"
                 >
                   Process
                 </NavLink>
@@ -104,14 +104,14 @@ const Navbarmenu = () => {
                 <NavLink
                   onClick={toggleClass}
                   activeClassName="is-active"
-                  to="/Products"
+                  to="/products"
                 >
                   Products
                 </NavLink>
               </li>
 
               {/* <li className="menu-item">
-                                <NavLink onClick={toggleClass} activeClassName='is-active' to="/News">News</NavLink>
+                                <NavLink onClick={toggleClass} activeClassName='is-active' to="/news">News</NavLink>
                             </li> */}
 
               <li className="menu-item">
@@ -125,7 +125,7 @@ const Navbarmenu = () => {
                     boxSizing: "border-box",
                   }}
                   activeClassName="is-active"
-                  to="/Contactus"
+                  to="/contactus"
                 >
                   Contact us
                 </NavLink>

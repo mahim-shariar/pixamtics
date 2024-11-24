@@ -53,12 +53,12 @@ function App() {
             {" "}
             {/* Use Routes instead of Switch */}
             <Route path="/" element={<Home />} />
-            <Route path="/Home" element={<Home />} />
-            <Route path="/Aboutus" element={<Aboutus />} />
-            <Route path="/Process" element={<Process />} />
-            <Route path="/Products" element={<Products />} />
-            <Route path="/Contactus" element={<ContactUs />} />
-            <Route path="/News" element={<NewsFeed />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/aboutus" element={<Aboutus />} />
+            <Route path="/process" element={<Process />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/news" element={<NewsFeed />} />
           </Routes>
           <Footer />
         </Router>
