@@ -531,7 +531,7 @@ const About = () => {
                     component="video"
                     height="200"
                     width="80%"
-                    src="https://ak2-bucket.s3.us-east-1.amazonaws.com/outspace-assets/Videos/Home_1.mp4"
+                    src={vd1}
                     autoPlay
                     muted
                     loop

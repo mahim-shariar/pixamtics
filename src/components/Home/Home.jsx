@@ -172,7 +172,7 @@ const Home = () => {
                         objectFit: "cover",
                         width: "100%",
                       }}
-                      src="https://ak2-bucket.s3.us-east-1.amazonaws.com/outspace-assets/image/slide3.jpg"
+                      src={gambar3}
                       object
                       onLoad={handleLoaded}
                       alt="First slide"
