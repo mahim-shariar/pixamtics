@@ -12,30 +12,30 @@ const ProcessHeader = () => {
   const videoEl = useRef(null);
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const attemptPlay = () => {
-    videoEl &&
-      videoEl.current &&
-      videoEl.current.play().catch((error) => {
-        console.error("Error attempting to play", error);
-      });
-  };
-  useEffect(() => {
-    if (!loading) {
-      attemptPlay();
-    }
-  }, [loading]);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false); // Hide loader after content is loaded
-  //   }, 300); // Adjust the timeout according to your needs
-  // }, []);
-  const handleLoaded = () => {
-    setLoading(false);
-  };
 
-  // if (loading) {
-  //   return <Loader />; // Show loader while loading
-  // }
+  useEffect(() => {
+    const video = videoEl.current;
+
+    if (video) {
+      video.muted = true; // Required for autoplay
+      video.setAttribute("playsinline", "true"); // Inline playback on iOS
+      video.setAttribute("webkit-playsinline", "true"); // Legacy support for older iOS
+      video
+        .play()
+        .then(() => setLoading(false)) // Video successfully played
+        .catch((err) => {
+          console.warn("Video autoplay failed:", err);
+
+          // Retry playing the video
+          setTimeout(() => {
+            video.play().catch((retryErr) => {
+              console.error("Video playback retry failed:", retryErr);
+            });
+          }, 500);
+        });
+    }
+  }, []);
+
   return (
     <>
       <Grid container style={{ height: "100%", backgroundColor: "#000000" }}>
@@ -50,14 +50,18 @@ const ProcessHeader = () => {
         >
           <section
             style={{ height: "100%" }}
-            className={`content ${loading ? "hidden" : ""}`}
+            // className={`content ${loading ? "hidden" : ""}`}
           >
             <LazyLoadComponent>
               <Box
                 component="video"
                 src={vd1}
+                ref={videoEl}
                 autoPlay
                 muted
+                className="video"
+                playsInline
+                preload="auto"
                 loop
                 sx={{
                   objectFit: "cover",
