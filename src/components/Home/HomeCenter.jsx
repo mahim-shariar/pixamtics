@@ -527,18 +527,17 @@ const About = () => {
             <Box sx={{ textAlign: "center", padding: 1 }}>
               <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
                 <LazyLoadComponent>
-                  <Box
-                    component="video"
-                    height="200"
+                  <video
                     width="80%"
                     src={vd1}
                     autoPlay
                     muted
+                    playsInline
                     loop
-                    sx={{ objectFit: "cover" }}
+                    style={{ objectFit: "cover" }}
                   >
                     Your browser does not support the video tag.
-                  </Box>
+                  </video>
                 </LazyLoadComponent>
               </div>
             </Box>

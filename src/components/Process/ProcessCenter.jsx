@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
 import {
   Box,
   Divider,
@@ -15,7 +15,6 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import vd1 from "../../assets/Videos/Process_1.mp4";
 import vd2 from "../../assets/Videos/Process_4.mp4";
 import vd3 from "../../assets/Videos/Process_3.mp4";
-import Loader from "../Loader";
 export default function ProcessCenter() {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
@@ -183,18 +182,17 @@ export default function ProcessCenter() {
             <div data-aos="fade-up">
               <Box sx={{ textAlign: "right", pr: matchDownMd ? 1 : 5 }}>
                 <LazyLoadComponent>
-                  <Box
-                    component="video"
-                    height="200"
+                  <video
                     width="100%"
                     src={vd1}
                     autoPlay
+                    playsInline
                     muted
                     loop
-                    sx={{ objectFit: "cover" }}
+                    style={{ objectFit: "cover" }}
                   >
                     Your browser does not support the video tag.
-                  </Box>
+                  </video>
                 </LazyLoadComponent>
               </Box>
             </div>
@@ -282,18 +280,17 @@ export default function ProcessCenter() {
               {" "}
               <Box sx={{ padding: 0 }}>
                 <LazyLoadComponent>
-                  <Box
-                    component="video"
-                    height="200"
+                  <video
                     width="100%"
                     src={vd2}
+                    playsInline
                     autoPlay
                     muted
                     loop
-                    sx={{ objectFit: "cover" }}
+                    style={{ objectFit: "cover" }}
                   >
                     Your browser does not support the video tag.
-                  </Box>
+                  </video>
                 </LazyLoadComponent>
               </Box>
             </div>
@@ -444,18 +441,17 @@ export default function ProcessCenter() {
             <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
               <Box sx={{ textAlign: "center" }}>
                 <LazyLoadComponent>
-                  <Box
-                    component="video"
-                    height="200"
+                  <video
                     width="100%"
                     src={vd3}
                     autoPlay
                     muted
+                    playsInline
                     loop
-                    sx={{ objectFit: "cover" }}
+                    style={{ objectFit: "cover" }}
                   >
                     Your browser does not support the video tag.
-                  </Box>
+                  </video>
                 </LazyLoadComponent>
               </Box>
             </div>

@@ -122,13 +122,13 @@ const Aboutus = () => {
                             />
                         </div>  */}
             <LazyLoadComponent>
-              <Box
-                component="video"
+              <video
                 src={vd1}
                 autoPlay
                 muted
                 loop
-                sx={{
+                playsInline
+                style={{
                   objectFit: "cover",
                   width: "100%",
                   height: "100%",
@@ -136,7 +136,7 @@ const Aboutus = () => {
                 }}
               >
                 Your browser does not support the video tag.
-              </Box>
+              </video>
             </LazyLoadComponent>
 
             <div
