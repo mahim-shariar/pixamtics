@@ -13,29 +13,6 @@ const ProcessHeader = () => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
-  useEffect(() => {
-    const video = videoEl.current;
-
-    if (video) {
-      video.muted = true; // Required for autoplay
-      video.setAttribute("playsinline", "true"); // Inline playback on iOS
-      video.setAttribute("webkit-playsinline", "true"); // Legacy support for older iOS
-      video
-        .play()
-        .then(() => setLoading(false)) // Video successfully played
-        .catch((err) => {
-          console.warn("Video autoplay failed:", err);
-
-          // Retry playing the video
-          setTimeout(() => {
-            video.play().catch((retryErr) => {
-              console.error("Video playback retry failed:", retryErr);
-            });
-          }, 500);
-        });
-    }
-  }, []);
-
   return (
     <>
       <Grid container style={{ height: "100%", backgroundColor: "#000000" }}>
