@@ -181,19 +181,18 @@ export default function ProcessCenter() {
           >
             <div data-aos="fade-up">
               <Box sx={{ textAlign: "right", pr: matchDownMd ? 1 : 5 }}>
-                <LazyLoadComponent>
-                  <video
-                    width="100%"
-                    src={vd1}
-                    autoPlay
-                    playsInline
-                    muted
-                    loop
-                    style={{ objectFit: "cover" }}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                </LazyLoadComponent>
+                <video
+                  width="100%"
+                  src={vd1}
+                  autoPlay
+                  playsInline
+                  muted
+                  preload="auto"
+                  loop
+                  style={{ objectFit: "cover" }}
+                >
+                  Your browser does not support the video tag.
+                </video>
               </Box>
             </div>
           </Grid>
@@ -279,19 +278,18 @@ export default function ProcessCenter() {
             <div data-aos="fade-up">
               {" "}
               <Box sx={{ padding: 0 }}>
-                <LazyLoadComponent>
-                  <video
-                    width="100%"
-                    src={vd2}
-                    playsInline
-                    autoPlay
-                    muted
-                    loop
-                    style={{ objectFit: "cover" }}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                </LazyLoadComponent>
+                <video
+                  width="100%"
+                  src={vd2}
+                  playsInline
+                  autoPlay
+                  muted
+                  preload="auto"
+                  loop
+                  style={{ objectFit: "cover" }}
+                >
+                  Your browser does not support the video tag.
+                </video>
               </Box>
             </div>
           </Grid>
@@ -440,19 +438,18 @@ export default function ProcessCenter() {
           >
             <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
               <Box sx={{ textAlign: "center" }}>
-                <LazyLoadComponent>
-                  <video
-                    width="100%"
-                    src={vd3}
-                    autoPlay
-                    muted
-                    playsInline
-                    loop
-                    style={{ objectFit: "cover" }}
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                </LazyLoadComponent>
+                <video
+                  width="100%"
+                  src={vd3}
+                  autoPlay
+                  muted
+                  playsInline
+                  preload="auto"
+                  loop
+                  style={{ objectFit: "cover" }}
+                >
+                  Your browser does not support the video tag.
+                </video>
               </Box>
             </div>
           </Grid>

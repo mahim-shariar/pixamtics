@@ -29,25 +29,24 @@ const ProcessHeader = () => {
             style={{ height: "100%" }}
             // className={`content ${loading ? "hidden" : ""}`}
           >
-            <LazyLoadComponent>
-              <video
-                src={vd1}
-                ref={videoEl}
-                autoPlay
-                muted
-                className="video"
-                playsInline
-                loop
-                style={{
-                  objectFit: "cover",
-                  width: "100%",
-                  height: "100%",
-                  position: "center",
-                }}
-              >
-                Your browser does not support the video tag.
-              </video>
-            </LazyLoadComponent>
+            <video
+              src={vd1}
+              ref={videoEl}
+              autoPlay
+              muted
+              className="video"
+              preload="auto"
+              playsInline
+              loop
+              style={{
+                objectFit: "cover",
+                width: "100%",
+                height: "100%",
+                position: "center",
+              }}
+            >
+              Your browser does not support the video tag.
+            </video>
 
             <div
               style={{
@@ -77,17 +76,6 @@ const ProcessHeader = () => {
               >
                 Process
               </p>
-              {/* <p style={{
-                color: 'white',
-                fontSize: matchDownMd ? '1rem' : '1.2rem',
-                textDecoration: 'none',
-                textShadow: '0 0 24px var(--tw-shadow-color)'
-              }} >
-                <Link to="/home" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
-                <span style={{ color: 'white', margin: '0 5px' }}>&gt;</span>
-                <Link to="/process" style={{ color: 'white', textDecoration: 'none' }}>Process</Link>
-              </p>
-              <p style={{ color: 'white', lineHeight: '1.0rem', fontSize: matchDownMd ? '1rem' : '1.2rem', }}>Textile waste is our raw material, and we use it to create high-quality recycled cotton fiber.</p> */}
             </div>
           </section>
         </Box>
