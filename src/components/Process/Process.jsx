@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/css/Process.css";
 import Loader from "../Loader";
 import AOS from "aos";
@@ -50,12 +50,9 @@ const Process = () => {
 
   return (
     <>
-      <Suspense>
-        <ProcessHeader />
-      </Suspense>
-      <Suspense>
-        <ProcessCenter />
-      </Suspense>
+      <ProcessHeader />
+
+      <ProcessCenter />
     </>
   );
 };
