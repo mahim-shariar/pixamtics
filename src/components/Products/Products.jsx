@@ -35,23 +35,33 @@ const Products = () => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [loading, setLoading] = useState(true); // Set loading to true initially
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 2000); // Simulating async load delay
-    AOS.init({ duration: 2000 });
-    return () => clearTimeout(timer); // Cleanup timer
+    AOS.init({ duration: 2000 }); // Initialize AOS animations
+
+    // Check when all assets are fully loaded
+    const handlePageLoad = () => {
+      setLoading(false); // Page is fully loaded
+    };
+
+    // Attach event listener for complete page load
+    if (document.readyState === "complete") {
+      handlePageLoad(); // If already loaded
+    } else {
+      window.addEventListener("load", handlePageLoad); // Wait for load event
+    }
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("load", handlePageLoad);
+    };
   }, []);
 
-  const scrollToTop = () => {
-    scroll.scrollToTop({
-      duration: 500,
-      smooth: "easeInOutQuad",
-    });
+  const handleVideoLoad = () => {
+    setLoading(false); // Video is ready, so set loading to false
   };
 
-  // Show loader while content is still loading
   if (loading) {
     return (
       <div
@@ -61,13 +71,19 @@ const Products = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: "100%",
         }}
       >
-        <Loader />
+        <Loader /> {/* Replace this with your loading spinner or animation */}
       </div>
     );
   }
+  const scrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 500,
+      smooth: "easeInOutQuad",
+    });
+  };
+
   return (
     <>
       <Grid
@@ -91,6 +107,7 @@ const Products = () => {
                 autoPlay
                 muted
                 loop
+                preload="auto"
                 playsInline
                 style={{
                   objectFit: "cover",

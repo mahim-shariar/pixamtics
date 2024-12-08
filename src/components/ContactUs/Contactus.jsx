@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import {
   Box,
@@ -12,34 +11,51 @@ import {
   useTheme,
   Divider,
 } from "@mui/material";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import { Link } from "react-router-dom";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import backgroundImage from "../../assets/image/Contactus.webp"; // Use WebP format
 import Loader from "../Loader";
+import AOS from "aos"; // Ensure this import is correct
+import "aos/dist/aos.css"; // Don't forget to import the CSS as well
 
 const ContactUs = () => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const [loading, setLoading] = useState(true); // Loading state
 
-  // Simulate loading for 2 seconds
-  // useEffect(() => {
-  //   const timer = setTimeout(() => setLoading(false), 2000);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    // Initialize AOS for animations
+    AOS.init({ duration: 2000 });
+
+    // Handle the page load event
+    const handlePageLoad = () => {
+      setLoading(false);
+    };
+
+    if (document.readyState === "complete") {
+      handlePageLoad();
+    } else {
+      window.addEventListener("load", handlePageLoad);
+    }
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener("load", handlePageLoad);
+    };
+  }, []);
+
+  // Handle image load and delay for transition effect
   useEffect(() => {
     const img = new Image();
     img.src = backgroundImage;
 
     const handleImageLoad = () => {
       const timer = setTimeout(() => {
-        setLoading(false);
-      }, 1000); // 1-second delay
+        setLoading(false); // Once image is loaded, set loading to false
+      }, 1000); // Optional delay
 
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer); // Clean up timeout
     };
 
     img.onload = handleImageLoad;
@@ -47,6 +63,7 @@ const ContactUs = () => {
       setLoading(false); // Set loading to false in case of error
     };
   }, []);
+
   const commonTextFieldStyles = {
     color: "white",
     width: "100%",
@@ -75,7 +92,7 @@ const ContactUs = () => {
           alignItems: "center",
         }}
       >
-        <Loader />
+        <Loader /> {/* Replace this with your loading spinner or animation */}
       </div>
     );
   }
@@ -96,18 +113,6 @@ const ContactUs = () => {
             alignItems: "center",
           }}
         >
-          {/* <MailOutlineIcon sx={{ fontSize: matchDownMd ? '50px' : '80px', fill: 'white' }} /> */}
-          {/* <Typography
-            sx={{
-              color: 'white',
-              textAlign: 'center',
-              fontSize: matchDownMd ? '35px' : '45px',
-              fontWeight: 'bold',
-              textShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
-            }}
-          >
-            Contact Us
-          </Typography> */}
           <p
             style={{
               color: "white",
@@ -116,9 +121,7 @@ const ContactUs = () => {
               textShadow: "0 0 24px var(--tw-shadow-color)",
             }}
           >
-            {/* <Link to="/home" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
-            <span style={{ color: 'white', margin: '0 5px' }}>&gt;</span>
-            <Link to="/contactus" style={{ color: 'white', textDecoration: 'none' }}>Contact Us</Link> */}
+            {/* Navigation links can be uncommented here */}
           </p>
         </Box>
 

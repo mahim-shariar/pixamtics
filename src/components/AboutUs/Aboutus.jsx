@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"; // Updated import from @mui/material
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   Divider,
   Grid,
@@ -22,53 +22,45 @@ import aboute3 from "../../assets/img/aboute3.jpg";
 import logo2 from "../../assets/img/international-cotton-association.png";
 import logo3 from "../../assets/img/international-textile-manufacturers-federation-logo-34E5017480-seeklogo.com.png";
 import logo1 from "../../assets/img/BTMA.png";
-
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import Loader from "../Loader";
 
-// Rest of your component code here
-
 const Aboutus = () => {
-  const [loading, setLoading] = useState(true);
-
-  const videoEl = useRef(null);
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const attemptPlay = () => {
-    videoEl &&
-      videoEl.current &&
-      videoEl.current.play().catch((error) => {
-        console.error("Error attempting to play", error);
-      });
-  };
 
-  // Function to handle when content is loaded (video or image)
-  const handleLoaded = () => {
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    if (!loading) {
-      attemptPlay();
-    }
-  }, [loading]);
-
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 3000); // Simulating async load delay
-    AOS.init({ duration: 2000 });
-    return () => clearTimeout(timer); // Cleanup timer
-  }, []);
-  // useEffect(() => {
-  //     setTimeout(() => {
-  //         setLoading(false); // Hide loader after content is loaded
-  //     }, 300); // Adjust the timeout according to your needs
-  // }, []);
   const scrollToTop = () => {
     scroll.scrollToTop({
       duration: 500,
       smooth: "easeInOutQuad",
     });
+  };
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init({ duration: 2000 }); // Initialize AOS animations
+
+    // Check when all assets are fully loaded
+    const handlePageLoad = () => {
+      setLoading(false); // Page is fully loaded
+    };
+
+    // Attach event listener for complete page load
+    if (document.readyState === "complete") {
+      handlePageLoad(); // If already loaded
+    } else {
+      window.addEventListener("load", handlePageLoad); // Wait for load event
+    }
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("load", handlePageLoad);
+    };
+  }, []);
+
+  const handleVideoLoad = () => {
+    setLoading(false); // Video is ready, so set loading to false
   };
 
   if (loading) {
@@ -82,11 +74,10 @@ const Aboutus = () => {
           alignItems: "center",
         }}
       >
-        <Loader />
+        <Loader /> {/* Replace this with your loading spinner or animation */}
       </div>
-    ); // Show loader while loading
+    );
   }
-
   return (
     <>
       <Grid container style={{ height: "100%", backgroundColor: "#000000" }}>
@@ -102,26 +93,8 @@ const Aboutus = () => {
         >
           <section
             style={{ height: "100%", width: "100%" }}
-            className={`content ${loading ? "hidden" : ""}`}
+            // className={`content ${loading ? "hidden" : ""}`}
           >
-            {/* <div style={{ height: '100%', width: '100%' }} className={`content ${loading ? "hidden" : ""}`}>
-                            {/* Video Example */}
-            {/* <video
-                                width="600"
-                                controls
-                                onCanPlayThrough={handleLoaded} // Fires when the video can be played through
-                            >
-                                <source src={vd1} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-
-                            <img
-                                src="your-image.jpg"
-                                alt="Your Content"
-                                onLoad={handleLoaded} // Fires when the image is fully loaded
-                            />
-                        </div>  */}
-
             <video
               src={vd1}
               autoPlay
@@ -129,6 +102,8 @@ const Aboutus = () => {
               loop
               playsInline
               preload="auto"
+              onLoadedData={handleVideoLoad} // Triggers when the video is loaded enough to be played
+              onCanPlay={handleVideoLoad} // Ensures video can start playing
               style={{
                 objectFit: "cover",
                 width: "100%",
@@ -311,7 +286,6 @@ const Aboutus = () => {
                 marginBottom: 1,
               }}
             />
-            {/* <Typography sx={{ color: 'white', textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginBottom: 2 }}>10</Typography> */}
           </Box>
         </Box>
       </Grid>
@@ -471,7 +445,6 @@ const Aboutus = () => {
                 marginBottom: 1,
               }}
             />
-            {/* <Typography sx={{ color: 'white', textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginBottom: 2 }}>11</Typography> */}
           </Box>
         </Box>
       </Grid>
@@ -623,7 +596,6 @@ const Aboutus = () => {
                 marginBottom: 1,
               }}
             />
-            {/* <Typography sx={{ color: 'white', textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginBottom: 2 }}>12</Typography> */}
           </Box>
         </Box>
       </Grid>
@@ -812,7 +784,6 @@ const Aboutus = () => {
                 marginBottom: 1,
               }}
             />
-            {/* <Typography sx={{ color: 'white', textAlign: 'center', fontSize: 20, fontWeight: 'bold', marginBottom: 2 }}>13</Typography> */}
           </Box>
         </Box>
       </Grid>
@@ -922,8 +893,6 @@ const Aboutus = () => {
               position: "relative",
             }}
           >
-            {/* <Divider orientation="vertical" sx={{ width: 0.0001, height: '50px', background: 'white', opacity: 1, }} />
-                        <Divider sx={{ height: 15, width: 15, borderRadius: '50%', background: 'white', opacity: 1, marginBottom: 2 }} /> */}
             <Typography
               sx={{
                 color: "white",
@@ -1073,17 +1042,6 @@ const Aboutus = () => {
                 />
               </Divider>
             </>
-            {/* <Typography
-                            sx={{
-                                color: 'white',
-                                textAlign: 'center',
-                                fontSize: 20,
-                                fontWeight: 'bold',
-                                marginBottom: 2,
-                            }}
-                        >
-                            Products
-                        </Typography> */}
           </Box>
         </Grid>
       </Grid>

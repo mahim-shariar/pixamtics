@@ -9,34 +9,52 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from "@mui/material"; // Updated import
+} from "@mui/material";
 import { Carousel } from "react-bootstrap";
 import gambar1 from "../../assets/image/slide1.jpg";
 import gambar2 from "../../assets/image/slide2.jpg";
 import gambar3 from "../../assets/image/slide3.jpg";
 import Loader from "../Loader";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
 import singlelogo1 from "../../assets/img/singlelogo1.png";
 import singlelogo2 from "../../assets/img/singlelogo2.png";
 import "bootstrap/dist/css/bootstrap.min.css";
-import About from "./homeCenter";
+import About from "./HomeCenter";
 import "../../assets/css/homeImageSlider.css";
-// import { AOS } from "aos";
+import AOS from "aos"; // Ensure this import is correct
+import "aos/dist/aos.css"; // Don't forget to import the CSS as well
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 2000); // Simulating async load delay
-    // AOS.init({ duration: 2000 });
-    return () => clearTimeout(timer); // Cleanup timer
+    AOS.init({ duration: 2000 }); // Initialize AOS animations
 
-    setLoading(false);
+    // Check when all assets are fully loaded
+    const handlePageLoad = () => {
+      setLoading(false); // Page is fully loaded
+    };
+
+    // Attach event listener for complete page load
+    if (document.readyState === "complete") {
+      handlePageLoad(); // If already loaded
+    } else {
+      window.addEventListener("load", handlePageLoad); // Wait for load event
+    }
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("load", handlePageLoad);
+    };
   }, []);
 
+  const handleLoaded = () => {
+    // Check if all images and content have loaded
+    setLoading(false);
+  };
+
+  // If still loading, show the loader
   if (loading) {
     return (
       <div
@@ -45,230 +63,129 @@ const Home = () => {
           backgroundColor: "#000000",
           display: "flex",
           justifyContent: "center",
-          width: "100%",
           alignItems: "center",
         }}
       >
-        <Loader />
+        <Loader /> {/* Display loader until everything is ready */}
       </div>
-    ); // Show loader while loading
+    );
   }
-  const handleLoaded = () => {
-    setLoading(false);
-  };
 
   return (
     <>
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12} sx={{ zIndex: 1 }}>
-          <LazyLoadComponent>
-            <Box
-              sx={{
-                ".carousel-indicators": {
-                  justifyContent: "flex-end !important",
-                  marginRight: "5% !important",
-                },
-              }}
+          <Box
+            sx={{
+              ".carousel-indicators": {
+                justifyContent: "flex-end !important",
+                marginRight: "5% !important",
+              },
+            }}
+          >
+            <section
+              style={{ height: "100%", width: "100%" }}
+              className={`content ${loading ? "hidden" : ""}`}
             >
-              <section
-                style={{ height: "100%", width: "100%" }}
-                className={`content ${loading ? "hidden" : ""}`}
+              <Carousel
+                nextIcon={false}
+                prevIcon={false}
+                style={{ position: "flex", width: "100%" }}
               >
-                <Carousel
-                  nextIcon={false}
-                  prevIcon={false}
-                  style={{ position: "flex", width: "100%" }}
-                >
-                  <Carousel.Item
-                    interval={2000}
-                    style={{ textAlign: "center" }}
-                  >
-                    <img
-                      style={{
-                        height: matchDownMd ? "700px" : "686px",
-                        width: "100%",
-                        objectFit: "cover",
-                      }}
-                      src={gambar2}
-                      object
-                      onLoad={handleLoaded}
-                      alt="First slide"
-                    />
-                    {/* <Carousel.Caption >
-                  <h1 style={{ fontSize: matchDownMd ? '1.5rem' : '4rem' }}>
-                    Introducing REICONICS</h1>
-                  <p style={{
-                    wordWrap: 'break-word',
-                    fontSize: '1.125rem',
-                    lineHeight: '1.75rem',
-                    textAlign: 'center',
-                    maxWidth: '600px'
-                  }}>
-                    Recover™, Evlox and Jeanologia join forces to improve circularity in denim.
-                  </p>
-                  <a className=" btn  ">  <Typography sx={{
-                    color: 'white', textAlign: 'center', fontSize: matchDownMd ? '1.5rem' : '3rem', fontWeight: '600px', borderRadius: 7, border: '2px solid White', padding: 1,
-                    transition: 'transform 0.3s ease-in-out',
-                    ':hover': {
-                      background: 'gray',
-                      color: 'white',
-                      border: 'none',
-                      transform: 'scale(1.2)',
-                    },
-                  }}>
-                    Learn more
-                  </Typography></a>
-                </Carousel.Caption> */}
-                  </Carousel.Item>
-                  <Carousel.Item
-                    interval={2000}
-                    style={{ textAlign: "center" }}
-                  >
-                    <img
-                      style={{
-                        height: matchDownMd ? "700px" : "686px",
-                        width: "100%",
-                        objectFit: "cover",
-                      }}
-                      src={gambar1}
-                      object
-                      onLoad={handleLoaded}
-                      alt="First slide"
-                    />
-                    {/* <Carousel.Caption >
-                  <h1 style={{ fontSize: matchDownMd ? '1.5rem' : '4rem' }}>
-                    Sourcing with Due Diligence</h1>
-                  <p style={{
-                    wordWrap: 'break-word',
-                    fontSize: '1.125rem',
-                    lineHeight: '1.75rem',
-                    textAlign: 'center',
-                    maxWidth: '600px'
-                  }}>
-                    Recover™ transforms textile waste into sustainable recycled fibers, closing the loop on fashion.
-                  </p>
-                  <a className="btn">
-                    <Typography sx={{
-                      color: 'white', textAlign: 'center', fontSize: matchDownMd ? '1.5rem' : '3rem', fontWeight: '600px', borderRadius: 7, border: '2px solid White', padding: 1,
-                      transition: 'transform 0.3s ease-in-out',
-                      ':hover': {
-                        background: 'gray',
-                        color: 'white',
-                        border: 'none',
-                        transform: 'scale(1.2)',
-                      },
-                    }}>
-                      Learn more
-                    </Typography></a>
-                </Carousel.Caption> */}
-                  </Carousel.Item>
-                  <Carousel.Item
-                    interval={2000}
-                    style={{ textAlign: "center" }}
-                  >
-                    <img
-                      style={{
-                        height: matchDownMd ? "700px" : "686px",
-                        objectFit: "cover",
-                        width: "100%",
-                      }}
-                      src={gambar3}
-                      object
-                      onLoad={handleLoaded}
-                      alt="First slide"
-                    />
-                    {/* <Carousel.Caption >
-                  <h1 style={{ fontSize: matchDownMd ? '1.5rem' : '4rem' }}>
-                    Introducing REICONICS</h1>
-                  <p style={{
-                    wordWrap: 'break-word',
-                    fontSize: '1.125rem',
-                    lineHeight: '1.75rem',
-                    textAlign: 'center',
-                    maxWidth: '600px'
-                  }}>
-                    Recover™, Evlox and Jeanologia join forces to improve circularity in denim.
-                  </p>
-
-                  <a className=" btn  ">  <Typography sx={{
-                    color: 'white', textAlign: 'center', fontSize: matchDownMd ? '1.5rem' : '3rem', fontWeight: '700px', borderRadius: 7, border: '2px solid White', padding: 1,
-                    transition: 'transform 0.3s ease-in-out',
-                    ':hover': {
-                      background: 'gray',
-                      color: 'white',
-                      border: 'none',
-                      transform: 'scale(1.2)',
-                    },
-                  }}>
-                    Learn more
-                  </Typography></a>
-                </Carousel.Caption> */}
-                  </Carousel.Item>
-                </Carousel>
-                <div
+                <Carousel.Item interval={2000} style={{ textAlign: "center" }}>
+                  <img
+                    style={{
+                      height: matchDownMd ? "700px" : "686px",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
+                    src={gambar2}
+                    alt="First slide"
+                    onLoad={handleLoaded}
+                  />
+                </Carousel.Item>
+                <Carousel.Item interval={2000} style={{ textAlign: "center" }}>
+                  <img
+                    style={{
+                      height: matchDownMd ? "700px" : "686px",
+                      width: "100%",
+                      objectFit: "cover",
+                    }}
+                    src={gambar1}
+                    alt="Second slide"
+                    onLoad={handleLoaded}
+                  />
+                </Carousel.Item>
+                <Carousel.Item interval={2000} style={{ textAlign: "center" }}>
+                  <img
+                    style={{
+                      height: matchDownMd ? "700px" : "686px",
+                      objectFit: "cover",
+                      width: "100%",
+                    }}
+                    src={gambar3}
+                    alt="Third slide"
+                    onLoad={handleLoaded}
+                  />
+                </Carousel.Item>
+              </Carousel>
+              <div
+                style={{
+                  width: "100%",
+                  position: "absolute",
+                  top: matchDownMd ? "25%" : "25%",
+                  left: "0",
+                  textAlign: "center",
+                  zIndex: 1,
+                  lineHeight: matchDownMd ? "0.5" : "0.9",
+                }}
+              >
+                <img
                   style={{
-                    width: "100%",
-                    position: "absolute",
-                    top: matchDownMd ? "25%" : "25%",
-                    left: "0",
-                    textAlign: "center",
-                    zIndex: 1,
-                    lineHeight: matchDownMd ? "0.5" : "0.9",
+                    height: matchDownMd ? "100px" : "110px",
+                    boxShadow: "0 0px 0px rgba(0, 0, 0, 0.6)",
+                    textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
+                  }}
+                  src={singlelogo1}
+                  alt="Logo 1"
+                  onLoad={handleLoaded}
+                />
+                <img
+                  style={{
+                    height: matchDownMd ? "100px" : "110px",
+                    textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
+                  }}
+                  src={singlelogo2}
+                  alt="Logo 2"
+                  onLoad={handleLoaded}
+                />
+
+                <p
+                  style={{
+                    paddingTop: "20px",
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: matchDownMd ? "35px" : "45px",
+                    textDecoration: "none",
+                    textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
                   }}
                 >
-                  <img
-                    style={{
-                      height: matchDownMd ? "100px" : "110px",
-                      boxShadow: "0 0px 0px rgba(0, 0, 0, 0.6)",
-                      textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
-                    }}
-                    src={singlelogo1}
-                    object
-                    alt="First slide"
-                    onLoad={handleLoaded}
-                  />
-                  <img
-                    style={{
-                      height: matchDownMd ? "100px" : "110px",
-                      textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
-                    }}
-                    src={singlelogo2}
-                    object
-                    alt="First slide"
-                    onLoad={handleLoaded}
-                  />
-
-                  <p
-                    style={{
-                      paddingTop: "20px",
-                      color: "white",
-                      fontWeight: "bold",
-                      alignItems: "center",
-
-                      fontSize: matchDownMd ? "35px" : "45px",
-                      textDecoration: "none",
-                      textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
-                    }}
-                  >
-                    Outpace Spinning Mills
-                  </p>
-                  <p
-                    style={{
-                      color: "white",
-                      fontWeight: "bold",
-                      alignItems: "center",
-
-                      fontSize: matchDownMd ? "35px" : "45px",
-                      textDecoration: "none",
-                      textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
-                    }}
-                  >
-                    R A Spinning Mills
-                  </p>
-                </div>
-              </section>
-            </Box>
-          </LazyLoadComponent>
+                  Outpace Spinning Mills
+                </p>
+                <p
+                  style={{
+                    color: "white",
+                    fontWeight: "bold",
+                    fontSize: matchDownMd ? "35px" : "45px",
+                    textDecoration: "none",
+                    textShadow: "0 0 24px rgba(0, 0, 0, 0.6)",
+                  }}
+                >
+                  R A Spinning Mills
+                </p>
+              </div>
+            </section>
+          </Box>
         </Grid>
 
         <Grid

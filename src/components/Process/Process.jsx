@@ -1,22 +1,35 @@
-/* eslint-disable no-unreachable */
+import React, { Suspense, useState, useEffect } from "react";
 import "../../assets/css/Process.css";
-import ProcessCenter from "./ProcessCenter.jsx";
-import ProcessHeader from "./ProcessHeader.jsx";
 import Loader from "../Loader";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect, useState } from "react";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+
+// Lazy load the components
+const ProcessHeader = React.lazy(() => import("./ProcessHeader.jsx"));
+const ProcessCenter = React.lazy(() => import("./ProcessCenter.jsx"));
 
 const Process = () => {
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 2000); // Simulating async load delay
-    AOS.init({ duration: 2000 });
-    return () => clearTimeout(timer); // Cleanup timer
 
-    setLoading(false);
+  useEffect(() => {
+    AOS.init({ duration: 2000 }); // Initialize AOS animations
+
+    // Set loading state to false once the page is fully loaded
+    const handlePageLoad = () => {
+      setLoading(false); // Page is fully loaded
+    };
+
+    // If the page is already loaded, set loading state to false
+    if (document.readyState === "complete") {
+      handlePageLoad(); // If already loaded
+    } else {
+      window.addEventListener("load", handlePageLoad); // Wait for load event
+    }
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("load", handlePageLoad);
+    };
   }, []);
 
   if (loading) {
@@ -30,19 +43,21 @@ const Process = () => {
           alignItems: "center",
         }}
       >
-        <Loader />
+        <Loader /> {/* Display loader while loading */}
       </div>
-    ); // Show loader while loading
+    );
   }
+
   return (
     <>
-      <LazyLoadComponent>
+      <Suspense>
         <ProcessHeader />
-      </LazyLoadComponent>
-      <LazyLoadComponent>
+      </Suspense>
+      <Suspense>
         <ProcessCenter />
-      </LazyLoadComponent>
+      </Suspense>
     </>
   );
 };
+
 export default Process;
